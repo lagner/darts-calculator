@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/Page.qml</file>
+        <file>qml/users.qml</file>
+        <file>qml/order.qml</file>
+        <file>qml/game.qml</file>
+        <file>qml/edit.qml</file>
+        <file>qml/test.qml</file>
+        <file>qml/Crumbs.qml</file>
+        <file>js/script.js</file>
+        <file>qml/styles/Style.qml</file>
+    </qresource>
+</RCC>

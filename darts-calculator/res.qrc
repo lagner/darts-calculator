@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/bread_light.png</file>
+        <file>res/bread.png</file>
+        <file>res/trash_pressed.png</file>
+        <file>res/trash.png</file>
+        <file>res/user_add.png</file>
+        <file>res/user_add_pressed.png</file>
+        <file>res/reorder.png</file>
+        <file>res/sounds/womp-womp.mp3</file>
+        <file>res/sounds/dropping.mp3</file>
+        <file>res/bottom.png</file>
+        <file>res/top.png</file>
+        <file>res/bottom_pressed.png</file>
+        <file>res/top_pressed.png</file>
+    </qresource>
+</RCC>
