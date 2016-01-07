@@ -5,19 +5,6 @@ var GROUP_LOSERS = "На Дне!";
 
 var users;
 
-
-var DEFAULT_USERS = [
-            new User("sergey"),
-            new User("michail"),
-            new User("vadim")
-];
-
-
-function defaultUsers(id) {
-    id.append(DEFAULT_USERS);
-}
-
-
 function User(username) {
     this.name = username || "";
     this.selected = false;
