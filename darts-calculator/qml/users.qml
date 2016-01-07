@@ -10,17 +10,22 @@ import "qrc:///js/script.js" as Script
 Page {
 
     Settings {
-        property string delimeter: "#~~#"
-        property string names: ""
+        property string names: "[]"
 
         id: playersSettings
-        category: "Players"
+        category: "users"
 
         Component.onCompleted: {
-            var players = names.split(delimeter);
-            for(var i = 0; i < players.length; i++) {
-                if (players[i])
+            usersModel.clear();
+            try {
+                var players = JSON.parse(names);
+
+                for (var i = 0; i < players.length; i++)
                     usersModel.append(new Script.User(players[i]));
+
+            } catch (ex) {
+                console.error("serialized players array was corrupted. Drop it");
+                names = "[]";
             }
         }
     }
@@ -30,12 +35,12 @@ Page {
 
         Component.onDestruction: {
             var names = [];
-            for(var i = 0; i < count; i++) {
+            for (var i = 0; i < count; i++) {
                 var name = get(i).name;
                 if (name)
                     names.push(get(i).name);
             }
-            playersSettings.names = names.join(playersSettings.delimeter);
+            playersSettings.names = JSON.stringify(names);
         }
     }
 
