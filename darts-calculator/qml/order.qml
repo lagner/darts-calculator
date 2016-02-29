@@ -146,7 +146,7 @@ Page {
     Item {
         id: footerButtons
 
-        height: R.dp(54)
+        height: R.dp(96)
         anchors {
             margins: R.dp(12)
             bottom: parent.bottom
@@ -155,20 +155,53 @@ Page {
         }
 
         Button {
+            text: "Автоматическая жеребьёвка!"
+            width: parent.width
+            anchors {
+                top: parent.top
+                bottom: emptySpace.top
+            }
+            onClicked: {
+                for (var i = usersModel.count - 1; i > 0; --i) {
+                    var j = Math.floor(Math.random() * (i + 1))
+                    var tmpName = usersModel.get(i).name
+                    usersModel.get(i).name = usersModel.get(j).name
+                    usersModel.get(j).name = tmpName
+                }
+                footerButtons.startGame()
+            }
+        }
+
+        Item {
+            id: emptySpace
+            width: parent.width
+            height: R.dp(12)
+            anchors.centerIn: parent
+        }
+
+        Button {
             id: launchButton
 
             signal start
 
-            anchors.fill: parent
+            width: parent.width
+            anchors {
+                top: emptySpace.bottom
+                bottom: parent.bottom
+            }
             text: "Старт!"
 
             onClicked: {
-                sceneManager.push({
-                                             item: Qt.resolvedUrl("game.qml"),
-                                             properties: { usersModel: usersModel }
-                                         });
-                launchButton.start();
+                footerButtons.startGame()
             }
+        }
+
+        function startGame() {
+            sceneManager.push({
+                                         item: Qt.resolvedUrl("game.qml"),
+                                         properties: { usersModel: usersModel }
+                                     });
+            launchButton.start();
         }
     }
 }
